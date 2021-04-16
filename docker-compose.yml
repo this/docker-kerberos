@@ -7,6 +7,9 @@ services:
     volumes:
       # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
       - /dev/urandom:/dev/random
+    ports:
+      - "749:749"
+      - "88:88/udp"
 
 # NOTE:
 #  "env_file: kerberos.env" is optional.
