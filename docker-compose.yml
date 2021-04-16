@@ -1,7 +1,7 @@
 version: "2"
 services:
   kdc-server:
-    build: ./kdc-kadmin
+    build: ./kdc-server
     hostname: kdc.local
     env_file: kerberos.env
     volumes:
