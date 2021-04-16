@@ -1,20 +1,11 @@
 version: "2"
 services:
-  # This service MUST have the name "kdc-kadmin" otherwise every kerberos client won't be able to talk with the KDC.
-  # If you would like to change the name edit the file configureKerberosClient.sh and change the configurations
-  # "kdc" and "admin_server" in the /etc/krb5.conf section.
-  kdc-kadmin:
+  kdc-server:
     build: ./kdc-kadmin
     env_file: kerberos.env
     volumes:
       # This is needed otherwise there won't be enough entropy to generate a new kerberos realm
       - /dev/urandom:/dev/random
-
-  kerberos-client:
-    build: ./kerberos-client
-    env_file: kerberos.env
-    depends_on:
-      - kdc-kadmin
 
 # NOTE:
 #  "env_file: kerberos.env" is optional.
